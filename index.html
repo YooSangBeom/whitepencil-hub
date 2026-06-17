@@ -12,18 +12,19 @@
   --green-mid:#2d6a4f;
   --border:#e2e0d8;
   --ink3:#9a9a8e;
-  --header-h:60px;
-  --tab-h:54px;
+  --amber:#b45309;
+  --amber-bg:#fffbeb;
+  --amber-border:#fde68a;
 }
 html,body{height:100%;overflow:hidden;}
 body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
 /* ── HEADER ── */
 .site-header{
-  height:var(--header-h);
+  height:56px;
   background:var(--green);
   color:#fff;
-  padding:0 16px;
+  padding:0 14px;
   display:flex;
   align-items:center;
   gap:10px;
@@ -31,27 +32,21 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
   box-shadow:0 2px 8px rgba(0,0,0,.25);
   z-index:100;
 }
-.site-header img{height:30px;width:30px;object-fit:contain;border-radius:6px;}
-.header-title{font-size:15px;font-weight:700;letter-spacing:-.02em;}
-.header-sub{font-size:10px;color:#95d5b2;font-family:'DM Mono',monospace;letter-spacing:.06em;margin-top:1px;}
+.site-header img{height:28px;width:28px;object-fit:contain;border-radius:6px;}
+.header-title{font-size:14px;font-weight:700;letter-spacing:-.02em;}
+.header-sub{font-size:9px;color:#95d5b2;font-family:'DM Mono',monospace;letter-spacing:.06em;margin-top:1px;}
 
-/* ── TAB BAR ── */
-.tab-bar{
-  height:var(--tab-h);
+/* ── 상단 탭바 (고객용) ── */
+.top-tab-bar{
+  height:50px;
   display:flex;
   background:#fff;
   border-bottom:2px solid var(--border);
-  overflow-x:auto;
-  -webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
   flex-shrink:0;
   z-index:99;
 }
-.tab-bar::-webkit-scrollbar{display:none;}
-.tab-btn{
+.top-tab-btn{
   flex:1;
-  min-width:60px;
-  padding:0 6px;
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -62,18 +57,19 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
   background:none;
   color:var(--ink3);
   font-family:'Noto Sans KR',sans-serif;
-  font-size:9.5px;
+  font-size:9px;
   font-weight:500;
   border-bottom:3px solid transparent;
-  transition:color .18s,border-color .18s,background .18s;
-  white-space:nowrap;
+  transition:color .15s,border-color .15s,background .15s;
   position:relative;
   bottom:-2px;
+  padding:0 2px;
+  white-space:nowrap;
 }
-.tab-btn .ti{font-size:17px;line-height:1;}
-.tab-btn.active{color:var(--green-mid);border-bottom-color:var(--green-mid);background:#f7fbf8;}
+.top-tab-btn .ti{font-size:16px;line-height:1;}
+.top-tab-btn.active{color:var(--green-mid);border-bottom-color:var(--green-mid);background:#f7fbf8;}
 
-/* ── IFRAME PANELS ── */
+/* ── IFRAME 영역 ── */
 .panel-wrap{
   flex:1;
   position:relative;
@@ -91,6 +87,41 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
   border:none;
   display:block;
 }
+
+/* ── 하단 탭바 (한마디) ── */
+.bottom-tab-bar{
+  height:52px;
+  display:flex;
+  background:var(--amber-bg);
+  border-top:2px solid var(--amber-border);
+  flex-shrink:0;
+  z-index:99;
+}
+.bottom-tab-btn{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  cursor:pointer;
+  border:none;
+  background:none;
+  color:#92400e;
+  font-family:'Noto Sans KR',sans-serif;
+  font-size:10px;
+  font-weight:600;
+  border-top:3px solid transparent;
+  transition:color .15s,border-color .15s,background .15s;
+  position:relative;
+  top:-2px;
+}
+.bottom-tab-btn .ti{font-size:17px;line-height:1;}
+.bottom-tab-btn.active{
+  color:var(--amber);
+  border-top-color:var(--amber);
+  background:#fef3c7;
+}
 </style>
 </head>
 <body>
@@ -104,36 +135,31 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
   </div>
 </header>
 
-<!-- TAB BAR -->
-<nav class="tab-bar">
-  <button class="tab-btn active" onclick="switchTab('calc')"   id="tab-calc">
-    <span class="ti">💰</span>멤버십할인&등급확인
+<!-- 상단 탭바 : 고객용 5개 -->
+<nav class="top-tab-bar">
+  <button class="top-tab-btn active" onclick="switchTop('calc')" id="tab-calc">
+    <span class="ti">💰</span>멤버십·등급
   </button>
-  <button class="tab-btn" onclick="switchTab('library')" id="tab-library">
-    <span class="ti">📚</span>도서관휴관일할인
+  <button class="top-tab-btn" onclick="switchTop('library')" id="tab-library">
+    <span class="ti">📚</span>도서관할인
   </button>
-  <button class="tab-btn" onclick="switchTab('voice')"  id="tab-voice">
+  <button class="top-tab-btn" onclick="switchTop('voice')" id="tab-voice">
     <span class="ti">✉️</span>소통함
   </button>
-  <button class="tab-btn" onclick="switchTab('faq')"    id="tab-faq">
+  <button class="top-tab-btn" onclick="openFaq()" id="tab-faq">
     <span class="ti">❓</span>FAQ
   </button>
-  <button class="tab-btn" onclick="switchTab('refund')" id="tab-refund">
+  <button class="top-tab-btn" onclick="switchTop('refund')" id="tab-refund">
     <span class="ti">🧾</span>환불계산기
   </button>
 </nav>
 
-<!-- PANELS -->
+<!-- IFRAME PANELS -->
 <div class="panel-wrap">
 
   <div class="iframe-panel active" id="panel-calc">
     <iframe src="https://yoosangbeom.github.io/whitepencil-membership/"
             title="멤버십 요금 계산기" loading="lazy"></iframe>
-  </div>
-
-  <div class="iframe-panel" id="panel-refund">
-    <iframe src="https://yoosangbeom.github.io/refund-calculator/"
-            title="환불 계산기" loading="lazy"></iframe>
   </div>
 
   <div class="iframe-panel" id="panel-library">
@@ -146,19 +172,63 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
             title="화이트펜슬 소통함" loading="lazy"></iframe>
   </div>
 
-  <div class="iframe-panel" id="panel-faq">
-    <iframe src="https://whitepencil.notion.site/FAQ-613e4d255aa0493e80564952e15f11d2"
-            title="화이트펜슬 FAQ" loading="lazy"></iframe>
+  <div class="iframe-panel" id="panel-refund">
+    <iframe src="https://yoosangbeom.github.io/refund-calculator/"
+            title="환불 계산기" loading="lazy"></iframe>
+  </div>
+
+  <!-- 한마디 3개 -->
+  <div class="iframe-panel" id="panel-gasan">
+    <iframe src="https://script.google.com/macros/s/AKfycbzcKku8quWmaDOQHiVPAoW-iqUAFzusXM9UuDmI7w6tkaHnmWWA3fg9bXTvshMOBk9F/exec?page=postit"
+            title="가산 오늘의 한마디" loading="lazy"></iframe>
+  </div>
+
+  <div class="iframe-panel" id="panel-geumcheon">
+    <iframe src="https://script.google.com/macros/s/AKfycbzxQiB04tHAmSmokQWb0vxSxw0r_hipgxQcOZAaZja2AvF6pOig8WvOOiukXZbXwOBV/exec?page=postit"
+            title="금천 오늘의 한마디" loading="lazy"></iframe>
+  </div>
+
+  <div class="iframe-panel" id="panel-guro">
+    <iframe src="https://script.google.com/macros/s/AKfycbyQbwTVvf31E-0gCrGZQoNo-2TD9JQrVnbS7Ux_nrZPtY33xKlzeYx4X0kjKMPOde9aHA/exec?page=postit"
+            title="구로 오늘의 한마디" loading="lazy"></iframe>
   </div>
 
 </div>
 
+<!-- 하단 탭바 : 한마디 3개 -->
+<nav class="bottom-tab-bar">
+  <button class="bottom-tab-btn" onclick="switchBottom('gasan')" id="btab-gasan">
+    <span class="ti">📝</span>가산 한마디
+  </button>
+  <button class="bottom-tab-btn" onclick="switchBottom('geumcheon')" id="btab-geumcheon">
+    <span class="ti">📝</span>금천 한마디
+  </button>
+  <button class="bottom-tab-btn" onclick="switchBottom('guro')" id="btab-guro">
+    <span class="ti">📝</span>구로 한마디
+  </button>
+</nav>
+
 <script>
-function switchTab(id) {
+// 상단 탭 전환 (고객용) — 하단 탭 비활성화
+function switchTop(id) {
   document.querySelectorAll('.iframe-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.top-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.bottom-tab-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('panel-' + id).classList.add('active');
   document.getElementById('tab-' + id).classList.add('active');
+}
+
+// 하단 탭 전환 (한마디) — 상단 탭 비활성화
+function switchBottom(id) {
+  document.querySelectorAll('.iframe-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.top-tab-btn').forEach(b => b.classList.remove('active'));
+  document.querySelectorAll('.bottom-tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.getElementById('btab-' + id).classList.add('active');
+}
+
+function openFaq() {
+  window.open('https://whitepencil.notion.site/FAQ-613e4d255aa0493e80564952e15f11d2', '_blank');
 }
 </script>
 </body>
