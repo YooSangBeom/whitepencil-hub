@@ -37,7 +37,7 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 .top-tab-btn{
   flex:1;display:flex;align-items:center;justify-content:center;
   cursor:pointer;border:none;background:none;color:var(--ink3);
-  font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;
+  font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;
   border-bottom:3px solid transparent;
   transition:color .15s,border-color .15s,background .15s;
   position:relative;bottom:-2px;padding:0 4px;
@@ -60,7 +60,7 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 .bottom-tab-btn{
   flex:1;display:flex;align-items:center;justify-content:center;
   cursor:pointer;border:none;background:none;color:#92400e;
-  font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;
+  font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;
   border-top:3px solid transparent;
   transition:color .15s,border-color .15s,background .15s;
   position:relative;top:-2px;padding:0 4px;
@@ -88,7 +88,7 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 <!-- 상단 탭바 : 고객용 -->
 <nav class="top-tab-bar">
   <button class="top-tab-btn active" onclick="switchTop('calc')" id="tab-calc">
-    멤버십·등급
+    멤버십·등급할인
   </button>
   <button class="top-tab-btn" onclick="switchTop('library')" id="tab-library">
     가산도서관특가
@@ -153,21 +153,21 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
     가산한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('gasan-att')" id="btab-gasan-att">
-    가산출석
+    가산출석랭킹
   </button>
   <div class="divider"></div>
   <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-postit')" id="btab-geumcheon-postit">
     금천한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-att')" id="btab-geumcheon-att">
-    금천출석
+    금천출석랭킹
   </button>
   <div class="divider"></div>
   <button class="bottom-tab-btn" onclick="switchBottom('guro-postit')" id="btab-guro-postit">
     구로한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('guro-att')" id="btab-guro-att">
-    구로출석
+    구디출석랭킹
   </button>
 </nav>
 
