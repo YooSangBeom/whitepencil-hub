@@ -31,13 +31,13 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
 /* ── 상단 탭바 (고객용 5개) ── */
 .top-tab-bar{
-  height:62px;display:flex;background:#fff;
+  height:48px;display:flex;background:#fff;
   border-bottom:2px solid var(--border);flex-shrink:0;z-index:99;
 }
 .top-tab-btn{
   flex:1;display:flex;align-items:center;justify-content:center;
   cursor:pointer;border:none;background:none;color:var(--ink3);
-  font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;
+  font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;
   border-bottom:3px solid transparent;
   transition:color .15s,border-color .15s,background .15s;
   position:relative;bottom:-2px;padding:0 4px;
@@ -53,19 +53,19 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
 /* ── 하단 탭바 (지점별 한마디+출석체크) ── */
 .bottom-tab-bar{
-  height:62px;display:flex;
+  height:48px;display:flex;
   background:var(--amber-bg);border-top:2px solid var(--amber-border);
   flex-shrink:0;z-index:99;
 }
 .bottom-tab-btn{
-  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:3px;cursor:pointer;border:none;background:none;color:#92400e;
-  font-family:'Noto Sans KR',sans-serif;font-size:10.5px;font-weight:600;
+  flex:1;display:flex;align-items:center;justify-content:center;
+  cursor:pointer;border:none;background:none;color:#92400e;
+  font-family:'Noto Sans KR',sans-serif;font-size:14px;font-weight:700;
   border-top:3px solid transparent;
   transition:color .15s,border-color .15s,background .15s;
-  position:relative;top:-2px;padding:0 2px;white-space:nowrap;
+  position:relative;top:-2px;padding:0 4px;
+  word-break:keep-all;text-align:center;line-height:1.3;
 }
-.bottom-tab-btn .ti{font-size:19px;line-height:1;}
 .bottom-tab-btn.active{color:var(--amber);border-top-color:var(--amber);background:#fef3c7;}
 
 /* 하단 구분선 */
@@ -88,19 +88,19 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 <!-- 상단 탭바 : 고객용 -->
 <nav class="top-tab-bar">
   <button class="top-tab-btn active" onclick="switchTop('calc')" id="tab-calc">
-    <span class="ti">💰</span>멤버십·등급
+    멤버십·등급
   </button>
   <button class="top-tab-btn" onclick="switchTop('library')" id="tab-library">
-    <span class="ti">📚</span>가산도서관특가
+    가산도서관특가
   </button>
   <button class="top-tab-btn" onclick="switchTop('voice')" id="tab-voice">
-    <span class="ti">✉️</span>소통함
+    소통함
   </button>
   <button class="top-tab-btn" onclick="openFaq()" id="tab-faq">
-    <span class="ti">❓</span>FAQ
+    FAQ
   </button>
   <button class="top-tab-btn" onclick="switchTop('refund')" id="tab-refund">
-    <span class="ti">🧾</span>환불계산기
+    환불계산기
   </button>
 </nav>
 
@@ -150,24 +150,24 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 <!-- 하단 탭바 : 지점별 한마디 + 출석체크 -->
 <nav class="bottom-tab-bar">
   <button class="bottom-tab-btn" onclick="switchBottom('gasan-postit')" id="btab-gasan-postit">
-    <span class="ti">📝</span>가산한마디
+    가산한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('gasan-att')" id="btab-gasan-att">
-    <span class="ti">✅</span>가산출석
+    가산출석
   </button>
   <div class="divider"></div>
   <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-postit')" id="btab-geumcheon-postit">
-    <span class="ti">📝</span>금천한마디
+    금천한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-att')" id="btab-geumcheon-att">
-    <span class="ti">✅</span>금천출석
+    금천출석
   </button>
   <div class="divider"></div>
   <button class="bottom-tab-btn" onclick="switchBottom('guro-postit')" id="btab-guro-postit">
-    <span class="ti">📝</span>구로한마디
+    구로한마디
   </button>
   <button class="bottom-tab-btn" onclick="switchBottom('guro-att')" id="btab-guro-att">
-    <span class="ti">✅</span>구로출석
+    구로출석
   </button>
 </nav>
 
