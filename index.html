@@ -53,8 +53,8 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
 /* ── 하단 탭바 (지점별 한마디+출석체크) ── */
 .bottom-tab-bar{
-  height:48px;display:flex;
-  background:var(--amber-bg);border-top:2px solid var(--amber-border);
+  height:38px;display:flex;
+  border-top:2px solid var(--amber-border);
   flex-shrink:0;z-index:99;
 }
 .bottom-tab-btn{
@@ -63,14 +63,22 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
   font-family:'Noto Sans KR',sans-serif;font-size:12px;font-weight:700;
   border-top:3px solid transparent;
   transition:color .15s,border-color .15s,background .15s;
-  position:relative;top:-2px;padding:0 4px;
+  position:relative;top:-2px;padding:0 2px;
   word-break:keep-all;text-align:center;line-height:1.3;
 }
-.bottom-tab-btn.active{color:var(--amber);border-top-color:var(--amber);background:#fef3c7;}
+.bottom-tab-btn.active{color:var(--amber);border-top-color:var(--amber);}
+
+/* 지점별 배경색 */
+.bg-gasan   { background:#fff8f0; }
+.bg-geumcheon { background:#f0f7ff; }
+.bg-guro    { background:#f3f0ff; }
+.bg-gasan.active   { background:#ffe8cc; }
+.bg-geumcheon.active { background:#cce4ff; }
+.bg-guro.active    { background:#e2daff; }
 
 /* 하단 구분선 */
 .bottom-tab-bar .divider{
-  width:1px;background:var(--amber-border);margin:10px 0;flex-shrink:0;
+  width:2px;background:var(--amber-border);flex-shrink:0;
 }
 </style>
 </head>
@@ -149,24 +157,24 @@ body{font-family:'Noto Sans KR',sans-serif;display:flex;flex-direction:column;}
 
 <!-- 하단 탭바 : 지점별 한마디 + 출석체크 -->
 <nav class="bottom-tab-bar">
-  <button class="bottom-tab-btn" onclick="switchBottom('gasan-postit')" id="btab-gasan-postit">
+  <button class="bottom-tab-btn bg-gasan" onclick="switchBottom('gasan-postit')" id="btab-gasan-postit">
     가산한마디
   </button>
-  <button class="bottom-tab-btn" onclick="switchBottom('gasan-att')" id="btab-gasan-att">
+  <button class="bottom-tab-btn bg-gasan" onclick="switchBottom('gasan-att')" id="btab-gasan-att">
     가산랭킹
   </button>
   <div class="divider"></div>
-  <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-postit')" id="btab-geumcheon-postit">
+  <button class="bottom-tab-btn bg-geumcheon" onclick="switchBottom('geumcheon-postit')" id="btab-geumcheon-postit">
     금천한마디
   </button>
-  <button class="bottom-tab-btn" onclick="switchBottom('geumcheon-att')" id="btab-geumcheon-att">
+  <button class="bottom-tab-btn bg-geumcheon" onclick="switchBottom('geumcheon-att')" id="btab-geumcheon-att">
     금천랭킹
   </button>
   <div class="divider"></div>
-  <button class="bottom-tab-btn" onclick="switchBottom('guro-postit')" id="btab-guro-postit">
+  <button class="bottom-tab-btn bg-guro" onclick="switchBottom('guro-postit')" id="btab-guro-postit">
     구로한마디
   </button>
-  <button class="bottom-tab-btn" onclick="switchBottom('guro-att')" id="btab-guro-att">
+  <button class="bottom-tab-btn bg-guro" onclick="switchBottom('guro-att')" id="btab-guro-att">
     구디랭킹
   </button>
 </nav>
